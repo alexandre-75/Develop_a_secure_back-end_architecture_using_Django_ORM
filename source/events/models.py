@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.db import models
 from customers.models import Client
+
 
 
 class Event(models.Model):
@@ -17,8 +19,10 @@ class Event(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     
     client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)
-    support_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL)
-    sales_contact = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+
+    sales_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='sales_events')
+    support_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='support_events')
+    ...
 
     
     def __str__(self):

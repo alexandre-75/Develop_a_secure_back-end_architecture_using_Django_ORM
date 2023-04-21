@@ -6,7 +6,7 @@ class Client(models.Model):
     
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
-    email = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=20, blank=True, null=True)
     mobile = models.CharField(max_length=20, blank=True, null=True)
     company = models.CharField(max_length=250, blank=True, null=True)

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from customers.models import Client
 
 
 class Contrat(models.Model):
@@ -14,9 +15,8 @@ class Contrat(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    sales_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL)
-    client = models.ForeignKey(to=Client, on_delete=models.SET_NULL)
-    event = models.ForeignKey(Event, blank=True, null=True, on_delete=models.SET_NULL)
+    client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)
+    sales_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL)
     
     class Meta:
         ordering = ["-date_created"]

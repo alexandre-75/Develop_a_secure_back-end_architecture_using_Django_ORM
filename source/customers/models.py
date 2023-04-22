@@ -25,6 +25,6 @@ class Client(models.Model):
 
     def __str__(self):
             return (
-                f"{self.first_name} {self.last_name} | status : {self.status_client} "
-                f"({self.company}) - Sales contact : {self.sales_contact}"
+                f" {self.first_name} | {self.last_name} | {self.status_client} | "
+                f"{self.company} | {self.sales_client}"
             )

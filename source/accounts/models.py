@@ -25,3 +25,6 @@ class User(AbstractUser):
 
     def is_support(self):
         return self.groups.filter(name="Support").exists()
+    
+    def __str__(self):
+        return f"username : {self.username} | role : {self.role} | superuser : {self.is_superuser} | staff : {self.is_staff} | active : {self.is_active}"

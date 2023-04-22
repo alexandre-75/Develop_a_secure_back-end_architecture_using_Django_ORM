@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from customers.models import Client
+from contrats.models import Contract
 
 
 
@@ -18,11 +19,11 @@ class Event(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     
-    client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)
+    client_events = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL, related_name='client_events')
+    contract_events = models.ForeignKey(Contract, blank=True, null=True, on_delete=models.SET_NULL, related_name='contract_events')
 
-    sales_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='sales_events')
-    support_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='support_events')
-    ...
+    sales_events = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='sales_events')
+    support_events = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='support_events')
 
     
     def __str__(self):

@@ -3,7 +3,7 @@ from django.db import models
 from customers.models import Client
 
 
-class Contrat(models.Model):
+class Contract(models.Model):
 
     choice_status = [('open', 'OPEN'),('signed', 'SIGNED'),]
 
@@ -15,8 +15,8 @@ class Contrat(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)
-    sales_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL)
+    client_contract = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL, related_name='client_contract')
+    sales_contract = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='sales_contract')
     
     class Meta:
         ordering = ["-date_created"]

@@ -7,7 +7,14 @@ from .models import Client
 """
 
 
-class CustomersSerializer(ModelSerializer):
+class CustomersListSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Client
+        fields = ["id", "first_name", "last_name",]
+
+
+class CustomersDetailSerializer(ModelSerializer):
     
     class Meta:
         model = Client

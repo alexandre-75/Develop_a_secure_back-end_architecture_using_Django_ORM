@@ -1,9 +1,9 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 from .serializers import CustomersSerializer
 from .models import Client
 
 
-class CustomersList(ListAPIView):
+class CustomersList(ListAPIView, CreateAPIView):
     
     queryset = Client.objects.all()
     serializer_class = CustomersSerializer

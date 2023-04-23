@@ -6,8 +6,9 @@ class UserListSerializer(ModelSerializer):
     
     class Meta:
         model = User
-        fields = ["username", "email",]
-        
+        fields = ["id", "username", "email",]
+
+     
 class UserDetailSerializer(ModelSerializer):
     
     class Meta:

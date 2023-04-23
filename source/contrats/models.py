@@ -22,4 +22,4 @@ class Contract(models.Model):
         ordering = ["-date_created"]
     
     def __str__(self):
-        return f"Contrat num. {self.id} | Client: {self.client.first_name} | Sales Contact: {self.sales_contact}"
+        return f"Contrat num. {self.id}  | status : {self.contract_status}"

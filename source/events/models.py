@@ -27,4 +27,4 @@ class Event(models.Model):
 
     
     def __str__(self):
-        return f"Event. {self.id} | Support Contact: {self.support_contact} | Event Status: {self.event_status}"
+        return f"Event. {self.id} | Event Status: {self.event_status}"

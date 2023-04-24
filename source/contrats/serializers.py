@@ -7,3 +7,10 @@ class ContractListSerializer(ModelSerializer):
     class Meta:
         model = Contract
         fields = ["id"]
+        
+        
+class ContractDetailSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Contract
+        fields = "__all__"

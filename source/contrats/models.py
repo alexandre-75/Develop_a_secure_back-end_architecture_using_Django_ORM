@@ -17,9 +17,6 @@ class Contract(models.Model):
 
     client_contract = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL, related_name='client_contract')
     sales_contract = models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name='sales_contract')
-    
-    class Meta:
-        ordering = ["-date_created"]
 
     def __str__(self):
         return (f"{self.id}")

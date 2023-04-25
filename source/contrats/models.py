@@ -20,6 +20,6 @@ class Contract(models.Model):
     
     class Meta:
         ordering = ["-date_created"]
-    
+
     def __str__(self):
-        return f"Contrat num. {self.id}  | status : {self.contract_status}"
+        return (f"{self.id}")

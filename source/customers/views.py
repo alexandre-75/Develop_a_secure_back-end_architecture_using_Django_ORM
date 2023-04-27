@@ -3,7 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import CustomersListSerializer, CustomersDetailSerializer
 from .models import Client
 from events.models import Event
-from.permissions import ClientPermissions
+from .permissions import ClientPermissions
+from django.contrib.auth.models import Group, Permission
 
 
 class CustomersList(ListAPIView, CreateAPIView):

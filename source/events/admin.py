@@ -28,3 +28,11 @@ class EventAdmin(admin.ModelAdmin):
             )})
     )
     
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        user = request.user
+        if user.groups.filter(name="SALES_TEAM").exists():
+            queryset = queryset.filter(sales_events_id=user)
+        elif user.groups.filter(name="SUPPORT_TEAM").exists():
+            queryset = Event.objects.filter(support_events_id=user)
+        return queryset

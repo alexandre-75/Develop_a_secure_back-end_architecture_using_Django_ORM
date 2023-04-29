@@ -4,7 +4,6 @@ from .serializers import CustomersListSerializer, CustomersDetailSerializer
 from .models import Client
 from events.models import Event
 from .permissions import ClientPermissions
-from django.contrib.auth.models import Group, Permission
 from django.db.models import Q
 
 
@@ -29,13 +28,14 @@ class CustomersList(ListAPIView, CreateAPIView):
             else:
                 pass
         elif user.role == "SUPPORT":
+            list_clients = Event.objects.filter(support_events=user.id).values_list('client_events_id', flat=True)
+            queryset = queryset.filter(id__in=list_clients) 
             if client_name:
                 queryset = queryset.filter(first_name__icontains=client_name)
             elif client_email:
                 queryset = queryset.filter(email__icontains=client_email)
-            else: 
-                list_clients = Event.objects.filter(support_events=user.id).values_list('client_events_id', flat=True)
-                queryset = queryset.filter(id__in=list_clients)     
+            else:
+                pass          
         return queryset
 
 

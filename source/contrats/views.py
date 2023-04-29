@@ -27,7 +27,7 @@ class ContractList(ListAPIView):
         return get_contracts_queryset(user)
         
 
-class ContractDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView):
+class ContractDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView):
     
     permission_classes = [IsAuthenticated, ContractPermissions]
     serializer_class = ContractDetailSerializer

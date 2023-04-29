@@ -20,8 +20,7 @@ class EventList(ListAPIView):
             return Event.objects.all()
    
 
-class EventDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView):
-    
+class EventDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView):
     permission_classes = [IsAuthenticated, EventPermissions]
     serializer_class = EventDetailSerializer
     

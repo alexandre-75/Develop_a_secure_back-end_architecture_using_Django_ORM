@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .serializers import UserListSerializer, UserDetailSerializer
@@ -14,7 +14,7 @@ class UserList(ListAPIView):
     serializer_class = UserListSerializer
 
     
-class UserDetail(RetrieveAPIView):
+class UserDetail(RetrieveAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView):
     
     permission_classes = [IsAuthenticated, IsManagementUser]
     queryset = User.objects.all()

@@ -15,6 +15,7 @@
     - [7 . 2 - Creating a virtual environment](#7--2---creating-a-virtual-environment)
     - [7 . 3 - Installing packages](#7--3---installing-packages)
     - [7 . 4 - Start the program](#7--4---start-the-program)
+    - [7 . 5 - create a superuser](#7--5---create-a-superuser)
 - [8 . Django admin site front-end interface](#8--django-admin-site-front-end-interface)
 
 
@@ -24,13 +25,18 @@
 - Use the **Django REST framework** for the API
 - Using server-side rendering in **Django**.
 - Using **JSON Web Tokens (JWT)** to secure the API
-- construct an **entity-relationship diagram (ERD)**
+- Construct an **entity-relationship diagram (ERD)**
+- Using **PostgreSQL** as a database
 - Use **Jazzmin**
 
 ## 2 . Context
 - Epic Events meets the needs of start-ups wanting to organize “epic parties”.
 - Epic Events is a consulting and event management company.
-- My job is to manage the company's outdated customer relationship management (CRM) software.
+- The vendor who is responsible for the CRM has been hacked.
+- A CRM (Customer Relationship Management) is a system used by companies to manage their interactions with current and potential customers.
+- Consequence : develop a secure CRM system internal to the company.
+    - **creating a user interface with permissions.**
+    - **creation of an API with permissions.**
 
 ## 3 . Database
 
@@ -125,6 +131,15 @@ _Tested on Windows 10, Python 3.10.6. / Django 4.2. / djangorestframework 3.14.0
     ```
      cd source/
      ```
+ - migrations for database initialization:
+    ```
+    python manage.py makemigrations
+    ```
+    Then:
+    ```bash 
+    python manage.py migrate
+    ```  
+     
 - ***Run the server*** by executing the command :
   ```
   python manage.py runserver
@@ -134,7 +149,14 @@ _Tested on Windows 10, Python 3.10.6. / Django 4.2. / djangorestframework 3.14.0
   ```
   http://127.0.0.1:8000/
   ```
-  ## 8 . Django admin site front-end interface
+  
+#### 7 . 5 - create a superuser
+  - create your own content and for this, you need to create a superuser with :
+    ```
+    python manage.py createsuperuser
+    ```
+   
+## 8 . Django admin site front-end interface
   
   - Jazzmin is a Python package that provides a custom admin interface for Django
   - It replaces the default Django admin interface

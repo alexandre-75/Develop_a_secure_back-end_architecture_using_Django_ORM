@@ -25,9 +25,9 @@ class EventList(ListAPIView):
             if date_created_event:
                 queryset = queryset.filter(event_date__icontains=date_created_event)
             elif client_name:
-                queryset = queryset.filter(client_event_id__first_name__icontains=client_email)
+                queryset = queryset.filter(client_events_id__first_name__icontains=client_name)
             elif client_email:
-                queryset = queryset.filter(client_event_id__email__icontains=client_email)
+                queryset = queryset.filter(client_events_id__email__icontains=client_email)
             else:
                 pass
         elif user.role == "SUPPORT":
@@ -35,9 +35,9 @@ class EventList(ListAPIView):
             if date_created_event:
                 queryset = queryset.filter(event_date__icontains=date_created_event)
             elif client_name:
-                queryset = queryset.filter(client_event_id__first_name__icontains=client_email)
+                queryset = queryset.filter(client_events_id__first_name__icontains=client_name)
             elif client_email:
-                queryset = queryset.filter(client_event_id__email__icontains=client_email)
+                queryset = queryset.filter(client_events_id__email__icontains=client_email)
             else:
                 pass
         return queryset

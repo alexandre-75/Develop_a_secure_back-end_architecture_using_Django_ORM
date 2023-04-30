@@ -1,5 +1,23 @@
 <p align="center"><img src="pictures\16007804386673_P10.png" alt="logo" /></p>
 
+## Summary :
+
+- [1 - The Project](#1--the-project)
+- [2 - The Context](#2--context)
+- [3 - The Database](#3--database)
+- [4 - API Documentation](#4--api-documentation)
+- [5 - Entity-Relationship Diagram (ERD)](#5--entity-relationship-diagram-erd)
+- [6 - Permissions](#6--permissions)
+    - [6 . 1 - CRM Users - CRM Events](#6--1---crm-users---crm-events)
+    - [6 . 2 - CRM Clients - CRM Contratcs](#6--2---crm-clients---crm-contratcs)
+- [7 . Project download](#7--project-download)
+    - [7 . 1 - project recovery](#7--1---project-recovery)
+    - [7 . 2 - Creating a virtual environment](#7--2---creating-a-virtual-environment)
+    - [7 . 3 - Installing packages](#7--3---installing-packages)
+    - [7 . 4 - Start the program](#7--4---start-the-program)
+- [8 . Django admin site front-end interface](#8--django-admin-site-front-end-interface)
+
+
 ## 1 . The Project
 
 - Use the **Django** framework.
@@ -51,9 +69,10 @@ You will find in this documentation all the detailed API endpoints
 - CRM users are divided into three categories: Management, Sales, Support.
 - user has **access to the data**, depending on the group (Management, Support, Sales)
 - user has **access to HTTP requests**, depending on the group (Management, Support, Sales)
+- Using JSON Web Tokens (JWT) to secure the API
 
 
-#### 6 . 1 - CRM Users  -  CRM Events
+#### 6 . 1 - CRM Users - CRM Events
 
 <p align="center"><img src="https://github.com/alexandre-75/Develop_a_secure_back-end_architecture_using_Django_ORM/blob/main/pictures/Capture%20d%E2%80%99%C3%A9cran%202023-04-30%20144805.jpg?raw=true" alt="" /></p>
 
@@ -65,7 +84,7 @@ You will find in this documentation all the detailed API endpoints
 ###### Users
 - Management group = [GET] [PUT] [DELETE] all users + [POST] users
 
-#### 6 . 2 - CRM Clients  -  CRM Contratcs
+#### 6 . 2 - CRM Clients - CRM Contratcs
 <p align="center"><img src="https://github.com/alexandre-75/Develop_a_secure_back-end_architecture_using_Django_ORM/blob/main/pictures/Capture%20d%E2%80%99%C3%A9cran%202023-04-30%20144742.jpg?raw=true" alt="" /></p>
 
 ###### clients / contracts :
@@ -82,6 +101,8 @@ _Tested on Windows 10, Python 3.10.6. / Django 4.2. / djangorestframework 3.14.0
 - [Technical Specifications ( french )](https://github.com/alexandre-75/Develop_a_secure_back-end_architecture_using_Django_ORM/blob/main/pictures/PDF/CRM%2B-%2BExigences%2Btechniques.pdf)
 
 - [Fonctional Specifications ( french )](https://github.com/alexandre-75/Develop_a_secure_back-end_architecture_using_Django_ORM/blob/main/pictures/PDF/CRM%2B-%2BExigences%2Bfonctionnelles.pdf)
+
+- [Technical Requirements ( french )](https://openclassrooms.notion.site/5a4642c14eef48c78c9e1b98a8e0a3fc?v=12d25b7081ba436a9e06f0e99cdcae25)
 
 
 ####  7 . 1 - project recovery
@@ -113,3 +134,11 @@ _Tested on Windows 10, Python 3.10.6. / Django 4.2. / djangorestframework 3.14.0
   ```
   http://127.0.0.1:8000/
   ```
+  ## 8 . Django admin site front-end interface
+  
+  - Jazzmin is a Python package that provides a custom admin interface for Django
+  - It replaces the default Django admin interface
+  - It is available as an open source package
+  - [Jazzmin official documentation](https://django-jazzmin.readthedocs.io/)
+  
+  <p align="center"><img src="https://github.com/alexandre-75/Develop_a_secure_back-end_architecture_using_Django_ORM/blob/main/pictures/ezgif.com-video-to-gif%20(2).gif?raw=true" alt="admin" /></p>

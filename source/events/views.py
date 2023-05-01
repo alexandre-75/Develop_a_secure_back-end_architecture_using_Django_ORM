@@ -18,8 +18,6 @@ class EventList(ListAPIView):
         client_email = self.request.query_params.get('email')
         date_created_event = self.request.query_params.get('event_date')
         
-        queryset = Event.objects.all()
-        
         if user.role == "SALE":
             queryset = Event.objects.filter(sales_events=user.id)
             if date_created_event:
@@ -32,6 +30,16 @@ class EventList(ListAPIView):
                 pass
         elif user.role == "SUPPORT":
             queryset = Event.objects.filter(support_events=user.id)
+            if date_created_event:
+                queryset = queryset.filter(event_date__icontains=date_created_event)
+            elif client_name:
+                queryset = queryset.filter(client_events_id__first_name__icontains=client_name)
+            elif client_email:
+                queryset = queryset.filter(client_events_id__email__icontains=client_email)
+            else:
+                pass
+        elif user.role == "MANAGEMENT":
+            queryset = Event.objects.all()
             if date_created_event:
                 queryset = queryset.filter(event_date__icontains=date_created_event)
             elif client_name:

@@ -17,8 +17,6 @@ class CustomersList(ListAPIView, CreateAPIView):
         client_name = self.request.query_params.get('first_name')
         client_email = self.request.query_params.get('email')
 
-        queryset = Client.objects.all()
-
         if user.role == "SALE":
             queryset = queryset.filter(sales_client=user)
             if client_name:
@@ -35,7 +33,15 @@ class CustomersList(ListAPIView, CreateAPIView):
             elif client_email:
                 queryset = queryset.filter(email__icontains=client_email)
             else:
-                pass          
+                pass
+        elif user.role == "MANAGEMENT":
+            queryset = Client.objects.all()
+            if client_name:
+                queryset = queryset.filter(first_name__icontains=client_name)
+            elif client_email:
+                queryset = queryset.filter(email__icontains=client_email)
+            else:
+                pass
         return queryset
 
 

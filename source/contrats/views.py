@@ -24,8 +24,7 @@ class ContractList(ListAPIView):
         client_email = self.request.query_params.get('email')
         amount_contract = self.request.query_params.get('amount')
         date_created_contract = self.request.query_params.get('date_created')
-        
-        queryset = Contract.objects.all()
+
         
         if user.role == "SALE":
             queryset = Contract.objects.filter(sales_contract_id=user.id)
@@ -53,6 +52,19 @@ class ContractList(ListAPIView):
                 queryset = queryset.filter(client_contract_id__first_name__icontains=client_name)
             else:
                 pass 
+        elif user.role == "MANAGEMENT":
+            queryset = Contract.objects.all()
+            if amount_contract:
+                queryset = queryset.filter(amount__icontains=amount_contract) 
+            elif date_created_contract:
+                queryset = queryset.filter(date_created__icontains=date_created_contract) 
+            elif client_email:
+                queryset = queryset.filter(client_contract_id__email__icontains=client_email)
+            elif client_name:
+                queryset = queryset.filter(client_contract_id__first_name__icontains=client_name)
+            else:
+                pass 
+            
         return queryset
 
 class ContractDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView):

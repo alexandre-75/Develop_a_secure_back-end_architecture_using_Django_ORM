@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from rest_framework.permissions import IsAuthenticated
 from .serializers import EventListSerializer, EventDetailSerializer
 from .models import Event
-from .permissions import EventPermissions
+from .permissions import EventPermissions, ContratSignePermission
 
 
 class EventList(ListAPIView):
@@ -52,7 +52,7 @@ class EventList(ListAPIView):
    
 
 class EventDetail(RetrieveAPIView, UpdateAPIView, DestroyAPIView, CreateAPIView):
-    permission_classes = [IsAuthenticated, EventPermissions]
+    permission_classes = [IsAuthenticated, EventPermissions, ContratSignePermission]
     serializer_class = EventDetailSerializer
     
     def get_queryset(self):

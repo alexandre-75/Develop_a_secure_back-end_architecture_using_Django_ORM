@@ -1,31 +1,17 @@
 from rest_framework import permissions
 from django.db import connection
+from django.contrib.auth.models import Group
 
 class ContractPermissions(permissions.BasePermission):
-           
-    def has_permission(self, request, view): 
  
-        user_id = request.user.id
-        group_name = None
-        
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """
-                SELECT auth_group.name
-                FROM auth_group
-                INNER JOIN accounts_user_groups
-                ON auth_group.id = accounts_user_groups.group_id
-                WHERE accounts_user_groups.user_id = %s
-                """,[user_id]
-                )
-            results = cursor.fetchall()
+        def has_permission(self, request, view):
+            user_groups = Group.objects.filter(user=request.user)
+            group_names = ', '.join(user_groups.values_list('name', flat=True))
+            print(group_names)
 
-        for row in results:
-            group_name = row[0]
-            
-        if group_name == "SALES_TEAM":
-            return request.method in ["GET", "POST", "PUT"]
-        elif group_name == "SUPPORT_TEAM":
-            return request.method in ["GET"]
-        else:
-            return request.method in ["GET", "POST", "PUT", "DELETE"]
+            if "SALES_TEAM" in group_names:
+                return request.method in ["GET", "POST", "PUT"]
+            elif "SUPPORT_TEAM" in group_names:
+                return request.method in ["GET"]
+            else:
+                return request.method in ["GET", "POST", "PUT", "DELETE"]

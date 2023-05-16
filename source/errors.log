@@ -1,0 +1,10 @@
+INFO autoreload Watching for file changes with StatReloader 2023-05-16 12:26:30,463
+WARNING log Forbidden: /contracts/list/43/ 2023-05-16 12:26:35,111
+WARNING basehttp "POST /contracts/list/43/ HTTP/1.1" 403 63 2023-05-16 12:26:35,111
+INFO basehttp "GET /contracts/list/ HTTP/1.1" 200 21 2023-05-16 12:27:07,963
+WARNING log Unauthorized: /contracts/list/43/ 2023-05-16 12:27:16,085
+WARNING basehttp "PUT /contracts/list/43/ HTTP/1.1" 401 183 2023-05-16 12:27:16,085
+WARNING log Forbidden: /contracts/list/43/ 2023-05-16 12:27:28,682
+WARNING basehttp "POST /contracts/list/43/ HTTP/1.1" 403 63 2023-05-16 12:27:28,682
+INFO autoreload C:\Users\alexandre\Desktop\P12\code\source\EpicEvents\settings.py changed, reloading. 2023-05-16 12:28:34,596
+INFO autoreload Watching for file changes with StatReloader 2023-05-16 12:28:35,314

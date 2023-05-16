@@ -139,3 +139,29 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar": "sidebar-dark-danger",
     "theme": "sketchy",
 }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "format": {
+            "format": "{levelname} {module} {message} {asctime}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": "errors.log",
+            "formatter": "format",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
